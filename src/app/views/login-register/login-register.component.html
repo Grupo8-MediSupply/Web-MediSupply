@@ -28,6 +28,12 @@
       <div class="errorval" *ngIf="loginRequested && this.loginForm.controls.password.hasError('required')">
         La contraseña es requerida.
       </div>
+      <div class="errorval" *ngIf="loginRequested && this.error403">
+        Credenciales erroneas.
+      </div>
+      <div class="errorval" *ngIf="loginRequested && this.error423">
+        Cuenta Bloqueada.
+      </div>
 
       <button type="submit">Ingresar</button>
     </div>
@@ -70,6 +76,9 @@
       </div>
       <div class="errorval" *ngIf="registerRequested && this.registerForm.controls.password.hasError('required')">
         La contraseña es requerida.
+      </div>
+      <div class="errorval" *ngIf="registerRequested && this.error400">
+        Email ya registrado.
       </div>
 
       <button type="submit">Registrarme</button>

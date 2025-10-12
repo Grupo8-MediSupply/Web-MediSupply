@@ -19,6 +19,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './login-register.component.scss',
 })
 export class LoginRegisterComponent implements OnInit {
+  error403: boolean = false;
+  error423: boolean = false;
+  error400: boolean = false;
   loginMode: boolean = true;
   loginRequested: boolean = false;
   registerRequested: boolean = false;
@@ -81,13 +84,21 @@ export class LoginRegisterComponent implements OnInit {
       (this.loginService.login(payload) as Observable<LoginResponse>).subscribe(
         {
           next: (response: LoginResponse) => {
+            this.error400 = false;
+            this.error403 = false;
+            this.error423 = false;
             console.log('Login successful', response);
             localStorage.setItem('email', payload.email || '');
+            if (response.token) {
+              localStorage.setItem('token', response.token);
+            }
             this.router.navigateByUrl('/app/lista-alarmas');
           },
           error: (error: unknown) => {
             console.error('Login failed', error);
-            // TODO: manejar el error, mostrar un mensaje al usuario.
+            this.error400 = (error as any)?.status === 400;
+            this.error403 = (error as any)?.status === 403;
+            this.error423 = (error as any)?.status === 423;
           },
         },
       );
