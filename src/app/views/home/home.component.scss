@@ -1,12 +1,15 @@
 header {
-  background-color: #007BFF;
+  background-color: #00696F;
   color: white;
   overflow: hidden;
   height: 75px;
 }
 
 button {
-  background-color: #007BFF;
+  background-color: #00696F;
+  &:hover {
+    background-color: #4A6365;
+  }
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -43,7 +46,7 @@ button:hover {
 .listbtn-active {
   width: auto;
   padding: 10px 18px;
-  background-color: #FF8C00;
+  background-color: #4F5F7D;
   color: black;
   right: 10px;
   top: 15px;

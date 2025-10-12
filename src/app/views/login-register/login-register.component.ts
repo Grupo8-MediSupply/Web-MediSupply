@@ -8,9 +8,12 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-register',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login-register.component.html',
   styleUrl: './login-register.component.scss',
@@ -24,7 +27,7 @@ export class LoginRegisterComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(16),
+      Validators.minLength(6),
     ]),
   });
 
@@ -40,12 +43,14 @@ export class LoginRegisterComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(16),
+      Validators.minLength(6),
     ]),
   });
 
   private readonly router = inject(Router);
+  private readonly loginService = inject(LoginService);
   private readonly dialog = inject(MatDialog);
+  private readonly authService = inject(AuthService);
 
   constructor() {}
 
@@ -63,14 +68,29 @@ export class LoginRegisterComponent implements OnInit {
     console.log(
       this.loginForm.value,
       this.loginForm.valid,
-      this.loginForm.controls.email.errors
+      this.loginForm.controls.email.errors,
     );
     if (this.loginForm.valid) {
-      localStorage.setItem(
-        'email',
-        this.loginForm.value.email || 'ya viene lleno'
+      type LoginPayload = { email: string; password: string };
+      interface LoginResponse {
+        token?: string;
+        [key: string]: unknown;
+      }
+      const payload = this.loginForm.value as LoginPayload;
+
+      (this.loginService.login(payload) as Observable<LoginResponse>).subscribe(
+        {
+          next: (response: LoginResponse) => {
+            console.log('Login successful', response);
+            localStorage.setItem('email', payload.email || '');
+            this.router.navigateByUrl('/app/lista-alarmas');
+          },
+          error: (error: unknown) => {
+            console.error('Login failed', error);
+            // TODO: manejar el error, mostrar un mensaje al usuario.
+          },
+        },
       );
-      this.router.navigateByUrl('/app/lista-alarmas');
     }
   }
 
@@ -79,7 +99,7 @@ export class LoginRegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       localStorage.setItem(
         'email',
-        this.loginForm.value.email || 'ya viene lleno'
+        this.loginForm.value.email || 'ya viene lleno',
       );
       this.router.navigateByUrl('/app/lista-alarmas');
     }
@@ -99,9 +119,11 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'remember-password-dialog',
+  standalone: true,
   template: `<h2 mat-dialog-title>Recordar Contraseña</h2>
     <mat-dialog-content
       >Se ha enviado un token de autenticación a tu correo.</mat-dialog-content

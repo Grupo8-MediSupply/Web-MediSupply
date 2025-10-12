@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "web-tus-alarmas": {
+    "web-medysupply": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/web-tus-alarmas",
+            "outputPath": "dist/web-medysupply",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -37,8 +37,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "50000kB",
+                  "maximumError": "100MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -60,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "web-tus-alarmas:build:production"
+              "buildTarget": "web-medysupply:build:production"
             },
             "development": {
-              "buildTarget": "web-tus-alarmas:build:development"
+              "buildTarget": "web-medysupply:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,10 +1,10 @@
 <header>
-  <img class="imgcontainer" src="logo_app 6.png" alt="icono" class="icono">
+  <img class="imgcontainer" src="logo_app.png" alt="icono" class="icono">
   <button type="button" class="cancelbtn" (click)="changeMode()">{{loginMode ? 'Registrate' : 'Ingresar'}}</button>
 </header>
 
 <div class="titulos">
-  <h1>Tus alarmas</h1>
+  <h1>MedySupply</h1>
   <h2>{{loginMode ? 'Login' : 'Registrate'}}</h2>
 </div>
 <div id="id01" class="modal">
@@ -23,7 +23,7 @@
       <label for="password"><b>Contraseña</b></label>
       <input type="password" placeholder="Contraseña" formControlName="password">
       <div class="errorval" *ngIf="loginRequested && this.loginForm.controls.password.hasError('minlength')">
-        La contraseña debe tener al menos 16 caracteres.
+        La contraseña debe tener al menos 6 caracteres.
       </div>
       <div class="errorval" *ngIf="loginRequested && this.loginForm.controls.password.hasError('required')">
         La contraseña es requerida.
@@ -66,7 +66,7 @@
       <label for="password"><b>Contraseña</b></label>
       <input type="password" placeholder="Contraseña" formControlName="password">
       <div class="errorval" *ngIf="registerRequested && this.registerForm.controls.password.hasError('minlength')">
-        La contraseña debe tener al menos 16 caracteres.
+        La contraseña debe tener al menos 6 caracteres.
       </div>
       <div class="errorval" *ngIf="registerRequested && this.registerForm.controls.password.hasError('required')">
         La contraseña es requerida.

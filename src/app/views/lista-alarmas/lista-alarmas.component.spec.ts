@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ListaAlarmasComponent } from './lista-alarmas.component';
 
@@ -8,9 +10,12 @@ describe('ListaAlarmasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListaAlarmasComponent]
-    })
-    .compileComponents();
+      imports: [
+        ListaAlarmasComponent,
+        RouterTestingModule,
+        HttpClientTestingModule,
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ListaAlarmasComponent);
     component = fixture.componentInstance;
