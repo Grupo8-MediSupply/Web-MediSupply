@@ -4,9 +4,11 @@ on:
     branches: [ main, develop ]
   pull_request:
     branches: [ main, develop ]
+  merge_group:
+    types: [checks_requested]
 
 jobs:
-  docker-medisupply-api:
+  docker-medisupply-web:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -36,4 +38,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/Grupo8-MediSupply/Web-MediSupply/web-medisupply:latest
+            ghcr.io/${{ github.repository }}/web-medisupply:latest
