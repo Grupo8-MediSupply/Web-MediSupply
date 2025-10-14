@@ -16,8 +16,8 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
 import { AlarmasService } from '../../services/alarmas/alarmas.service';
 import Alarma from '../../services/alarmas/alarma';
 
-import { UbicacionesService } from '../../services/ubicaciones/ubicaciones.service';
-import Ubicacion from '../../services/ubicaciones/ubicacion';
+import { CategoriasService } from '../../services/categorias/categorias.service';
+import Categoria from '../../services/categorias/categoria';
 
 @Component({
   selector: 'app-lista-alarmas',
@@ -108,7 +108,7 @@ export class ListaAlarmasComponent
     this.pageIndex = e.pageIndex;
     this.alarmasMostrar = this.alarmas.slice(
       e.pageIndex * e.pageSize,
-      e.pageIndex * e.pageSize + e.pageSize
+      e.pageIndex * e.pageSize + e.pageSize,
     );
   }
 

@@ -1,18 +1,18 @@
-<h1>Listado de ubicaciones</h1>
+<h1>Listado de categorias</h1>
 
 <div class="content">
   <mat-grid-list cols="1" rowHeight="100px" gutterSize="16px">
-    <mat-grid-tile class="tile-card" *ngFor="let ubicacion of ubicacionesMostrar">
-      <mat-card class="content-card" appearance="outlined" (click)="openDetail(ubicacion.id)">
+    <mat-grid-tile class="tile-card" *ngFor="let categoria of categoriasMostrar">
+      <mat-card class="content-card" appearance="outlined" (click)="openDetail(categoria.id)">
         <mat-card-header>
           <mat-card-title-group>
-            <mat-card-title>{{ubicacion.name}}</mat-card-title>
-            <mat-card-subtitle>{{ubicacion.description}}</mat-card-subtitle>
+            <mat-card-title>{{categoria.name}}</mat-card-title>
+            <mat-card-subtitle>{{categoria.description}}</mat-card-subtitle>
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
           <hr>
-          {{ubicacion.active ? '🟢' : '🔴'}} {{ubicacion.latitude}}, {{ubicacion.longitude}} ({{ubicacion.radio}}[m])
+          {{categoria.name}}, {{categoria.description}}
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

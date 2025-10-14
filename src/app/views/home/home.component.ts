@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
         case 'lista-alarmas':
           this.listAlarms = 'listbtn-active';
           break;
-        case 'lista-ubicaciones':
+        case 'lista-categorias':
           this.listUbications = 'listbtn-active';
           break;
         case 'reportes':
