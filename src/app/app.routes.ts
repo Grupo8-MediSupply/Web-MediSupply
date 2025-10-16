@@ -22,8 +22,8 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'lista-productos', pathMatch: 'full' }, //TODO: En realidad aqui iria dashboard page
       { path: 'lista-productos', component: ListaProductosComponent },
-      { path: 'detalle-alarma', component: DetalleProductoComponent },
-      { path: 'detalle-alarma/:id', component: DetalleProductoComponent },
+      { path: 'detalle-producto', component: DetalleProductoComponent },
+      { path: 'detalle-producto/:id', component: DetalleProductoComponent },
       { path: 'lista-categorias', component: ListaCategoriasComponent },
       { path: 'detalle-categoria', component: DetalleCategoriaComponent },
       { path: 'detalle-categoria/:id', component: DetalleCategoriaComponent },

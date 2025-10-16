@@ -13,10 +13,10 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-detalle-alarma',
+  selector: 'app-detalle-producto',
   imports: [CommonModule, MatSlideToggleModule, ReactiveFormsModule],
-  templateUrl: './detalle-alarma.component.html',
-  styleUrl: './detalle-alarma.component.scss',
+  templateUrl: './detalle-producto.component.html',
+  styleUrl: './detalle-producto.component.scss',
 })
 export class DetalleProductoComponent implements OnInit {
   alarma?: Producto;

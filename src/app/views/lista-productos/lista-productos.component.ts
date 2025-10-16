@@ -114,7 +114,7 @@ export class ListaProductosComponent
 
   public openDetail(id: any = null): void {
     if (id && Number.isInteger(id))
-      this.router.navigate(['/app/detalle-alarma', id]);
-    else this.router.navigate(['/app/detalle-alarma']);
+      this.router.navigate(['/app/detalle-producto', id]);
+    else this.router.navigate(['/app/detalle-producto']);
   }
 }
