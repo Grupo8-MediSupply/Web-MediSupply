@@ -39,7 +39,7 @@ export class ReportesComponent implements OnInit, AfterContentInit {
   } = {
     series: [
       {
-        name: 'Productos atendidas',
+        name: 'Alarmas atendidas',
         data: [56, 57, 9, 97, 43, 37, 54, 72, 24, 67, 27, 87],
       },
     ],
