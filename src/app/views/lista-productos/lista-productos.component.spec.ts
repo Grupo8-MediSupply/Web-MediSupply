@@ -2,22 +2,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { ListaAlarmasComponent } from './lista-alarmas.component';
+import { ListaProductosComponent } from './lista-productos.component';
 
-describe('ListaAlarmasComponent', () => {
-  let component: ListaAlarmasComponent;
-  let fixture: ComponentFixture<ListaAlarmasComponent>;
+describe('ListaProductosComponent', () => {
+  let component: ListaProductosComponent;
+  let fixture: ComponentFixture<ListaProductosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        ListaAlarmasComponent,
+        ListaProductosComponent,
         RouterTestingModule,
         HttpClientTestingModule,
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ListaAlarmasComponent);
+    fixture = TestBed.createComponent(ListaProductosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

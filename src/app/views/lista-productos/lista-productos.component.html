@@ -1,8 +1,8 @@
-<h1>Listado de alarmas</h1>
+<h1>Listado de productos</h1>
 
 <div class="content">
   <mat-grid-list [cols]="breakpoint" [gutterSize]="'16px'">
-    <mat-grid-tile class="tile-card" *ngFor="let alarma of alarmasMostrar">
+    <mat-grid-tile class="tile-card" *ngFor="let alarma of productosMostrar">
       <mat-card class="content-card" appearance="outlined" (click)="openDetail(alarma.id)">
         <mat-card-header>
           <mat-card-title-group>

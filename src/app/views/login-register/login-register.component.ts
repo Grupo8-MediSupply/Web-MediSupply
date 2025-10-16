@@ -92,7 +92,7 @@ export class LoginRegisterComponent implements OnInit {
             if (response.token) {
               localStorage.setItem('token', response.token);
             }
-            this.router.navigateByUrl('/app/lista-alarmas');
+            this.router.navigateByUrl('/app/lista-productos');
           },
           error: (error: unknown) => {
             console.error('Login failed', error);
@@ -112,7 +112,7 @@ export class LoginRegisterComponent implements OnInit {
         'email',
         this.loginForm.value.email || 'ya viene lleno',
       );
-      this.router.navigateByUrl('/app/lista-alarmas');
+      this.router.navigateByUrl('/app/lista-productos');
     }
   }
 

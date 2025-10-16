@@ -11,7 +11,7 @@ export class CategoriasService {
 
   // TODO: Agregar parametros para paginación
   getCategorias(): Observable<Categoria[]> {
-    return this.http.get<Categoria[]>(`/api/ubicaciones.json`);
+    return this.http.get<Categoria[]>(`/api/categorias.json`);
   }
 
   getCategoria(id: string): Observable<Categoria> {

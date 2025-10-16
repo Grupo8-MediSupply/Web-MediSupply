@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
       const lastPartHref = window.location.href.split('/').pop();
       switch (lastPartHref) {
-        case 'lista-alarmas':
+        case 'lista-productos':
           this.listAlarms = 'listbtn-active';
           break;
         case 'lista-categorias':

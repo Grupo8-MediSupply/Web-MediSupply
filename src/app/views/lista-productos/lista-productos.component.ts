@@ -13,14 +13,14 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 
-import { AlarmasService } from '../../services/alarmas/alarmas.service';
-import Alarma from '../../services/alarmas/alarma';
+import { ProductosService } from '../../services/productos/productos.service';
+import Producto from '../../services/productos/producto';
 
 import { CategoriasService } from '../../services/categorias/categorias.service';
 import Categoria from '../../services/categorias/categoria';
 
 @Component({
-  selector: 'app-lista-alarmas',
+  selector: 'app-lista-productos',
   imports: [
     CommonModule,
     MatCardModule,
@@ -28,14 +28,14 @@ import Categoria from '../../services/categorias/categoria';
     MatIconModule,
     MatPaginatorModule,
   ],
-  templateUrl: './lista-alarmas.component.html',
-  styleUrl: './lista-alarmas.component.scss',
+  templateUrl: './lista-productos.component.html',
+  styleUrl: './lista-productos.component.scss',
 })
-export class ListaAlarmasComponent
+export class ListaProductosComponent
   implements OnInit, AfterContentInit, OnDestroy
 {
-  alarmas: Alarma[] = [];
-  alarmasMostrar: Alarma[] = [];
+  productos: Producto[] = [];
+  productosMostrar: Producto[] = [];
   length = 0;
   pageSize = 5;
   pageIndex = 0;
@@ -56,15 +56,15 @@ export class ListaAlarmasComponent
   breakpoint = this.gridByBreakpoint['md'];
 
   private readonly router = inject(Router);
-  private readonly alarmasService = inject(AlarmasService);
+  private readonly productosService = inject(ProductosService);
 
   constructor() {}
 
-  private getAlarmas(): void {
-    this.alarmasService.getAlarmas().subscribe((alarmas) => {
-      this.length = alarmas.length;
-      this.alarmas = alarmas;
-      this.alarmasMostrar = this.alarmas.slice(0, this.pageSize);
+  private getProductos(): void {
+    this.productosService.getProductos().subscribe((productos) => {
+      this.length = productos.length;
+      this.productos = productos;
+      this.productosMostrar = this.productos.slice(0, this.pageSize);
     });
   }
 
@@ -88,7 +88,7 @@ export class ListaAlarmasComponent
         console.log(`Breakpoint: ${newSize}`);
       }
     });
-    this.getAlarmas();
+    this.getProductos();
   }
 
   ngAfterContentInit(): void {
@@ -106,7 +106,7 @@ export class ListaAlarmasComponent
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    this.alarmasMostrar = this.alarmas.slice(
+    this.productosMostrar = this.productos.slice(
       e.pageIndex * e.pageSize,
       e.pageIndex * e.pageSize + e.pageSize,
     );
