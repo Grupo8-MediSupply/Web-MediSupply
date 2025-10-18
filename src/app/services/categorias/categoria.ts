@@ -1,4 +1,4 @@
-export default interface Ubicacion {
+export default interface Categoria {
   id: string;
   name: string;
   description: string;

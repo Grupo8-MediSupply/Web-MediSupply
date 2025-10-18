@@ -1,4 +1,4 @@
-export default interface Alarma {
+export default interface Producto {
   id: string;
   name: string;
   description: string;

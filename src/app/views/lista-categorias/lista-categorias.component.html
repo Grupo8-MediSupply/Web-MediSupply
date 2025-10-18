@@ -1,20 +1,18 @@
-<h1>Listado de alarmas</h1>
+<h1>Listado de categorias</h1>
 
 <div class="content">
-  <mat-grid-list [cols]="breakpoint" [gutterSize]="'16px'">
-    <mat-grid-tile class="tile-card" *ngFor="let alarma of alarmasMostrar">
-      <mat-card class="content-card" appearance="outlined" (click)="openDetail(alarma.id)">
+  <mat-grid-list cols="1" rowHeight="100px" gutterSize="16px">
+    <mat-grid-tile class="tile-card" *ngFor="let categoria of categoriasMostrar">
+      <mat-card class="content-card" appearance="outlined" (click)="openDetail(categoria.id)">
         <mat-card-header>
           <mat-card-title-group>
-            <mat-card-title>{{alarma.name}}</mat-card-title>
-            <mat-card-subtitle>{{alarma.description}}</mat-card-subtitle>
-            <img mat-card-md-image [src]="alarma.image" >
+            <mat-card-title>{{categoria.name}}</mat-card-title>
+            <mat-card-subtitle>{{categoria.description}}</mat-card-subtitle>
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
           <hr>
-          {{alarma.active ? '🟢' : '🔴'}}
-          {{alarma.alarms}}
+          {{categoria.name}}, {{categoria.description}}
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

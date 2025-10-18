@@ -2,22 +2,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { DetalleUbicacionComponent } from './detalle-ubicacion.component';
+import { DetalleProductoComponent } from './detalle-producto.component';
 
-describe('DetalleUbicacionComponent', () => {
-  let component: DetalleUbicacionComponent;
-  let fixture: ComponentFixture<DetalleUbicacionComponent>;
+describe('DetalleProductoComponent', () => {
+  let component: DetalleProductoComponent;
+  let fixture: ComponentFixture<DetalleProductoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        DetalleUbicacionComponent,
+        DetalleProductoComponent,
         RouterTestingModule,
         HttpClientTestingModule,
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DetalleUbicacionComponent);
+    fixture = TestBed.createComponent(DetalleProductoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

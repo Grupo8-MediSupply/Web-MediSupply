@@ -1,23 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import Alarma from './alarma';
+import Producto from './producto';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AlarmasService {
+export class ProductosService {
   constructor(private http: HttpClient) {}
 
   // TODO: Agregar parametros para paginación
-  getAlarmas(): Observable<Alarma[]> {
-    return this.http.get<Alarma[]>(`/api/alarmas.json`);
+  getProductos(): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`/api/productos.json`);
   }
 
-  getAlarma(id: string): Observable<Alarma> {
-    return this.getAlarmas().pipe(
-      map((alarmas) => {
-        for (const alarma of alarmas) {
+  getProducto(id: string): Observable<Producto> {
+    return this.getProductos().pipe(
+      map((productos) => {
+        for (const alarma of productos) {
           if (`${alarma.id}` === `${id}`) return alarma;
         }
         throw new Error(`not-found/${id}`);

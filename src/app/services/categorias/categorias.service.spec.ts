@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { UbicacionesService } from './ubicaciones.service';
+import { CategoriasService } from './categorias.service';
 
-describe('UbicacionesService', () => {
-  let service: UbicacionesService;
+describe('CategoriasService', () => {
+  let service: CategoriasService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(UbicacionesService);
+    service = TestBed.inject(CategoriasService);
   });
 
   it('should be created', () => {

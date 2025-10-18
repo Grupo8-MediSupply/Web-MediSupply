@@ -3,8 +3,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AlarmasService } from '../../services/alarmas/alarmas.service';
-import Alarma from '../../services/alarmas/alarma';
+import { ProductosService } from '../../services/productos/productos.service';
+import Producto from '../../services/productos/producto';
 import {
   FormControl,
   FormGroup,
@@ -13,15 +13,15 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-detalle-alarma',
+  selector: 'app-detalle-producto',
   imports: [CommonModule, MatSlideToggleModule, ReactiveFormsModule],
-  templateUrl: './detalle-alarma.component.html',
-  styleUrl: './detalle-alarma.component.scss',
+  templateUrl: './detalle-producto.component.html',
+  styleUrl: './detalle-producto.component.scss',
 })
-export class DetalleAlarmaComponent implements OnInit {
-  alarma?: Alarma;
+export class DetalleProductoComponent implements OnInit {
+  alarma?: Producto;
 
-  detalleAlarmaForm = new FormGroup({
+  detalleProductoForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     image: new FormControl('', [
@@ -39,17 +39,17 @@ export class DetalleAlarmaComponent implements OnInit {
 
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
-  private readonly alarmasService = inject(AlarmasService);
+  private readonly productosService = inject(ProductosService);
 
   constructor() {}
 
   ngOnInit(): void {
     const alarmId = this.route.snapshot.paramMap.get('id');
     if (alarmId && Number.isInteger(+alarmId)) {
-      this.alarmasService.getAlarma(alarmId).subscribe({
+      this.productosService.getProducto(alarmId).subscribe({
         next: (alarma) => {
           this.alarma = alarma;
-          this.detalleAlarmaForm.setValue({
+          this.detalleProductoForm.setValue({
             name: alarma.name,
             description: alarma.description,
             image: alarma.image,
@@ -65,12 +65,12 @@ export class DetalleAlarmaComponent implements OnInit {
     } // fi
   }
 
-  public editAlarma(): void {
-    if (this.detalleAlarmaForm.valid) {
+  public editProducto(): void {
+    if (this.detalleProductoForm.valid) {
     }
   }
 
-  public createsAlarma(): void {}
+  public createsProducto(): void {}
 
-  public deleteAlarma(): void {}
+  public deleteProducto(): void {}
 }

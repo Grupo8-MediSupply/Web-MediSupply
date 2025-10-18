@@ -1,18 +1,20 @@
-<h1>Listado de ubicaciones</h1>
+<h1>Listado de productos</h1>
 
 <div class="content">
-  <mat-grid-list cols="1" rowHeight="100px" gutterSize="16px">
-    <mat-grid-tile class="tile-card" *ngFor="let ubicacion of ubicacionesMostrar">
-      <mat-card class="content-card" appearance="outlined" (click)="openDetail(ubicacion.id)">
+  <mat-grid-list [cols]="breakpoint" [gutterSize]="'16px'">
+    <mat-grid-tile class="tile-card" *ngFor="let alarma of productosMostrar">
+      <mat-card class="content-card" appearance="outlined" (click)="openDetail(alarma.id)">
         <mat-card-header>
           <mat-card-title-group>
-            <mat-card-title>{{ubicacion.name}}</mat-card-title>
-            <mat-card-subtitle>{{ubicacion.description}}</mat-card-subtitle>
+            <mat-card-title>{{alarma.name}}</mat-card-title>
+            <mat-card-subtitle>{{alarma.description}}</mat-card-subtitle>
+            <img mat-card-md-image [src]="alarma.image" >
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
           <hr>
-          {{ubicacion.active ? '🟢' : '🔴'}} {{ubicacion.latitude}}, {{ubicacion.longitude}} ({{ubicacion.radio}}[m])
+          {{alarma.active ? '🟢' : '🔴'}}
+          {{alarma.alarms}}
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

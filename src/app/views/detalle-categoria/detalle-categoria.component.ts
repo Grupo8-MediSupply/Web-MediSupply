@@ -3,8 +3,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { UbicacionesService } from '../../services/ubicaciones/ubicaciones.service';
-import Ubicacion from '../../services/ubicaciones/ubicacion';
+import { CategoriasService } from '../../services/categorias/categorias.service';
+import Categoria from '../../services/categorias/categoria';
 import {
   FormControl,
   FormGroup,
@@ -13,21 +13,21 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-detalle-ubicacion',
+  selector: 'app-detalle-categoria',
   imports: [CommonModule, MatSlideToggleModule, ReactiveFormsModule],
-  templateUrl: './detalle-ubicacion.component.html',
-  styleUrl: './detalle-ubicacion.component.scss',
+  templateUrl: './detalle-categoria.component.html',
+  styleUrl: './detalle-categoria.component.scss',
 })
-export class DetalleUbicacionComponent implements OnInit {
-  ubicacion?: Ubicacion;
+export class DetalleCategoriaComponent implements OnInit {
+  ubicacion?: Categoria;
 
-  detalleUbicacionForm = new FormGroup({
+  detalleCategoriaForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     image: new FormControl('', [
       Validators.required,
       Validators.pattern(
-        /(http(s?):)([/|.|\w|\s|-])*(:[0-9]*)?([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png|svg)$/
+        /(http(s?):)([/|.|\w|\s|-])*(:[0-9]*)?([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png|svg)$/,
       ),
     ]),
     latitude: new FormControl(0, [Validators.required]),
@@ -38,17 +38,17 @@ export class DetalleUbicacionComponent implements OnInit {
 
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
-  private readonly ubicacionsService = inject(UbicacionesService);
+  private readonly ubicacionsService = inject(CategoriasService);
 
   constructor() {}
 
   ngOnInit(): void {
     const alarmId = this.route.snapshot.paramMap.get('id');
     if (alarmId && Number.isInteger(+alarmId)) {
-      this.ubicacionsService.getUbicacion(alarmId).subscribe({
+      this.ubicacionsService.getCategoria(alarmId).subscribe({
         next: (ubicacion) => {
           this.ubicacion = ubicacion;
-          this.detalleUbicacionForm.setValue({
+          this.detalleCategoriaForm.setValue({
             name: ubicacion.name,
             description: ubicacion.description,
             image: ubicacion.image,
@@ -66,12 +66,12 @@ export class DetalleUbicacionComponent implements OnInit {
     } // fi
   }
 
-  public editUbicacion(): void {
-    if (this.detalleUbicacionForm.valid) {
+  public editCategoria(): void {
+    if (this.detalleCategoriaForm.valid) {
     }
   }
 
-  public createsUbicacion(): void {}
+  public createsCategoria(): void {}
 
-  public deleteUbicacion(): void {}
+  public deleteCategoria(): void {}
 }
